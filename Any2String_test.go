@@ -1,9 +1,10 @@
 package go_transform
 
 import (
-	"github.com/stretchr/testify/assert"
 	"math"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBoolToStringTrueCase(t *testing.T) {
@@ -28,4 +29,13 @@ func TestAnyIntToString(t *testing.T) {
 	assert.Equal(t, "-32768", IntToString(math.MinInt16))
 	assert.Equal(t, "-2147483648", IntToString(math.MinInt32))
 	assert.Equal(t, "-9223372036854775808", IntToString(math.MinInt64))
+	assert.Equal(t, "0", IntToString(0))
+}
+func TestAnyUintToString(t *testing.T) {
+	assert.Equal(t, "18446744073709551615", UintToString(math.MaxUint))
+	assert.Equal(t, "255", UintToString(math.MaxUint8))
+	assert.Equal(t, "65535", UintToString(math.MaxUint16))
+	assert.Equal(t, "4294967295", UintToString(math.MaxUint32))
+	assert.Equal(t, "18446744073709551615", UintToString(math.MaxUint64))
+	assert.Equal(t, "0", UintToString(0))
 }
